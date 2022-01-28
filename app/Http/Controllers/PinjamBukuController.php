@@ -104,7 +104,7 @@ class PinjamBukuController extends Controller
         $jumlah_buku = $approve->jumlah_buku;
         $buku_id = $approve->buku_id;
 
-        $update = $approve->update(['status'=>'Approve', 'admin_id'=>Auth::guard('admin')->user()->id]);
+        $update = $approve->update(['status'=>'Approve']);
         Buku::where('id', $buku_id)->decrement('stok_buku', $jumlah_buku);
 
         return response()->json($update);
@@ -112,7 +112,7 @@ class PinjamBukuController extends Controller
 
     public function reject (Request $request)
     {
-        $reject = PinjamBuku::find($request->id)->update(['status'=>'Reject', 'admin_id'=>Auth::guard('admin')->user()->id]);
+        $reject = PinjamBuku::find($request->id)->update(['status'=>'Reject']);
         return response()->json($reject);
     }
 

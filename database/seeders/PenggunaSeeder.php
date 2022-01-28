@@ -19,13 +19,5 @@ class PenggunaSeeder extends Seeder
             'email'=>'admin@book.com',
             'password'=>bcrypt('12345678')
         ]);
-
-        $anggota = Anggota::create([
-            'kode_anggota'=>Anggota::kodeAnggota(),
-            'username'=>'Anggota',
-            'no_telepon'=>'08978484',
-            'email'=>'anggota@book.com',
-            'password'=>bcrypt('12345678')
-        ]);
     }
 }

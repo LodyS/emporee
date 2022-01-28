@@ -10,6 +10,6 @@ class PinjamBuku extends Model
     use HasFactory;
 
     protected $table = 'pinjam_buku';
-    protected $fillable = ['buku_id', 'anggota_id', 'admin_id', 'tanggal_pinjam', 'tanggal_pengembalian', 'status', 'jumlah_buku'];
+    protected $fillable = ['buku_id', 'anggota_id', 'tanggal_pinjam', 'tanggal_pengembalian', 'status', 'jumlah_buku'];
     protected $primaryKey = 'id';
 }

@@ -17,16 +17,14 @@ class CreatePinjamBukusTable extends Migration
             $table->id();
             $table->bigInteger('buku_id')->unsigned();
             $table->bigInteger('anggota_id')->unsigned();
-            $table->bigInteger('admin_id')->nullable()->unsigned();
             $table->date('tanggal_pinjam')->nullable();
             $table->date('tanggal_pengembalian')->nullable();
             $table->string('status')->default('Menunggu persetujuan');
             $table->integer('jumlah_buku')->default(0)->nullable();
             $table->timestamps();
 
-            $table->foreign('buku_id')->references('id')->on('buku');
-            $table->foreign('anggota_id')->references('id')->on('anggota');
-            $table->foreign('admin_id')->references('id')->on('admin');
+            $table->foreign('buku_id')->references('id')->on('buku')->onDelete('cascade');
+            $table->foreign('anggota_id')->references('id')->on('anggota')->onDelete('cascade');
         });
     }
 
