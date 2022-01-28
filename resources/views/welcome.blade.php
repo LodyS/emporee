@@ -34,7 +34,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
+                                @auth('admin')
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{ url('/admin')}}" class="underline text-gray-900 dark:text-white">Admin</a></div>
+                                @else
                                 <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{ url('/login/admin')}}" class="underline text-gray-900 dark:text-white">Admin</a></div>
+                                @endauth
                             </div>
 
 
@@ -42,7 +46,12 @@
 
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                         <div class="flex items-center">
+                        @auth('anggota')
+                        <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{ url('/anggota')}}" class="underline text-gray-900 dark:text-white">Anggota</a></div>
+                        @else
                         <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{ url('/login/anggota')}}" class="underline text-gray-900 dark:text-white">Anggota</a></div>
+                        @endauth
+
                     </div>
                 </div>
             </div>
