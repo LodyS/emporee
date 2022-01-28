@@ -25,7 +25,8 @@ class PinjamBukuController extends Controller
         $buku = PinjamBuku::select('buku.judul_buku', 'status', 'tanggal_pinjam', 'tanggal_pengembalian', 'jumlah_buku')
         ->join('buku', 'buku.id', 'pinjam_buku.buku_id')
         ->where('anggota_id', Auth::guard('anggota')->user()->id)
-        ->where('status', '<>', 'Menunggu persetujuan');
+        ->where('status', '<>', 'Menunggu persetujuan')
+        ->where('status', '<>', 'Reject');
 
         if(request()->ajax()) {
             return datatables()->of($buku)
