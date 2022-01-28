@@ -13,12 +13,12 @@ class PinjamBukuController extends Controller
     public function index ()
     {
         return view ('pinjam-buku/index');
-    }
+    } // guard admin
 
     public function pengembalianPinjamanBuku()
     {
         return view ('pinjam-buku/pengembalian-pinjam-buku');
-    }
+    } // guard admin
 
     public function listbuku ()
     {
@@ -67,7 +67,7 @@ class PinjamBukuController extends Controller
             ->addIndexColumn()
             ->make(true);
         }
-    }
+    } // gurad admin
 
     public function store (PinjamBukuRequest $request)
     {
@@ -90,14 +90,14 @@ class PinjamBukuController extends Controller
             DB::rollback();
             return back()->withError('Gagal simpan data');
         }
-    }
+    } // guard admin
 
     public function stokbuku($buku_id)
     {
         $data = Buku::select('stok_buku')->where('id',$buku_id)->first();
         echo json_encode($data);
         exit;
-    }
+    } // guard admin
 
     public function approve (Request $request)
     {
@@ -109,13 +109,13 @@ class PinjamBukuController extends Controller
         Buku::where('id', $buku_id)->decrement('stok_buku', $jumlah_buku);
 
         return response()->json($update);
-    }
+    } // guard admin
 
     public function reject (Request $request)
     {
         $reject = PinjamBuku::find($request->id)->update(['status'=>'Reject']);
         return response()->json($reject);
-    }
+    } // guard admin
 
     public function listPinjamBuku ()
     {
@@ -139,7 +139,7 @@ class PinjamBukuController extends Controller
             ->addIndexColumn()
             ->make(true);
         }
-    }
+    } // guard admin
 
     public function pengembalianBuku(Request $request)
     {
@@ -151,5 +151,5 @@ class PinjamBukuController extends Controller
         Buku::where('id', $buku_id)->increment('stok_buku', $buku_id);
 
         return response()->json($pengembalianBuku);
-    }
+    } // guard admin
 }
