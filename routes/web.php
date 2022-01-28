@@ -15,12 +15,10 @@ Auth::routes();
 
 Route::get('/login/admin', [LoginController::class, 'showAdminLoginForm']);
 Route::get('/login/anggota', [LoginController::class,'showAnggotaLoginForm']);
-//Route::get('/register/admin', [RegisterController::class,'showAdminRegisterForm']);
 Route::get('/register/anggota', [RegisterController::class,'showAnggotaRegisterForm']);
 
 Route::post('/login/admin', [LoginController::class,'adminLogin']);
 Route::post('/login/anggota', [LoginController::class,'anggotaLogin']);
-//Route::post('/register/admin', [RegisterController::class,'createAdmin']);
 Route::post('/register/anggota', [RegisterController::class,'createAnggota']);
 
 Route::group(['middleware' => 'auth:anggota'], function () {

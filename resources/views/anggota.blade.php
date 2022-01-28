@@ -232,10 +232,13 @@ $('#form').submit(function(e) {
 
             if (jumlah_buku > stok_buku){
                 swal('Warning','Gagal simpan karena stok buku tidak cukup','warning')
+            } else {
+                swal('Success','Berhasil pinjam buku','success')
             }
 
             $("#modal").modal('hide');
             var oTable = $('#buku').dataTable();
+
             oTable.fnDraw(false);
 
             $("#btn-save").html('Submit');
